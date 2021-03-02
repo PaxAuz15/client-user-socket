@@ -6,10 +6,10 @@ import java.net.Socket;
 public class Cliente {
     public static void main(String[] args){
         try{
-            System.out.println("Cliente Iniciando");
+            System.out.println("CLIENTE INICIANDO\n");
             Socket socket = new Socket("localhost",9806);
             BufferedReader entradaUsuario = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Ingrese un mensaje");
+            System.out.println("INGRESE UN MENSAJE\n");
             String mensaje = entradaUsuario.readLine();
             PrintWriter salida = new PrintWriter(socket.getOutputStream(),true);
             salida.println(mensaje);

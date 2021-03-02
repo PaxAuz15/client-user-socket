@@ -12,10 +12,23 @@ public class Servidor {
             BufferedReader entrada = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String mensaje = entrada.readLine();
             String filtro_para_obtener_posibles_numeros = mensaje.replaceAll("\\D+","");
-            if( filtro_para_obtener_posibles_numeros == ""){
+            System.out.println(mensaje);
+            System.out.println(filtro_para_obtener_posibles_numeros);
+
+            // if( mensaje == filtro_para_obtener_posibles_numeros){
+            //     PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
+            //     salida.println("Servidor no acepta digitos en su mensaje");
+            // }else {
+            //     PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
+            //     salida.println("Servidor ha recibido un mensaje de Cliente=> " + mensaje);    
+            // }
+
+            if (filtro_para_obtener_posibles_numeros.isEmpty()){
                 PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
-                salida.println("Servidor dice: " + mensaje);    
-            }else {
+                salida.println("Servidor ha recibido un mensaje de Cliente=> " + mensaje);
+            }
+            
+            if(mensaje != filtro_para_obtener_posibles_numeros){
                 PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
                 salida.println("Servidor no acepta digitos en su mensaje");
             }
